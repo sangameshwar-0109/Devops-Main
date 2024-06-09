@@ -1,6 +1,7 @@
-FROM  amazoncorretto:17-alpine3.17-jdk
-RUN wget "https://khajareferenceapps.s3.ap-south-1.amazonaws.com/spring-petclinic-3.2.0-SNAPSHOT.jar"
+FROM amazoncorretto:17-alpine3.17-jdk
+ADD https://khajareferenceapps.s3.ap-south-1.amazonaws.com/spring-petclinic-3.2.0-SNAPSHOT.jar /spc/spring-petclinic-3.1.0-SNAPSHOT.jar
 LABEL author="sangu"
 LABEL project="practise"
+WORKDIR /spc 
 EXPOSE 8080
 CMD [ "java", "-jar", "spring-petclinic-3.2.0-SNAPSHOT.jar" ]
