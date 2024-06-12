@@ -16,5 +16,6 @@ USER ${USER}
 ADD --chown=${USER}:${GROUP} ${DOWNLOAD_URL} ${HOMEDIR}/spring-petclinic.jar
 WORKDIR ${HOMEDIR}
 EXPOSE 8080
-CMD [ "java", "jar", "spring-petclinic.jar" ]
+CMD [ "java", "jar", "spring-petclinic.jar" 
+
 
