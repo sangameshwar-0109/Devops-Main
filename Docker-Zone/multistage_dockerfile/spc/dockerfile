@@ -1,0 +1,12 @@
+FROM maven:3-amazoncorretto-17 As build
+ADD . /springpetclinic
+WORKDIR /springpetclinic
+RUN mvn package 
+
+
+FROM amazoncorretto:17-alpine-jdk 
+LABEL name="sangu"
+LABEL project="multistage dockerfile for spc"
+COPY --from=build /springpetclinic/target/spring-petclinic-3.3.0-SNAPSHOT.jar /spring-petclinic-3.3.0-SNAPSHOT.jar
+EXPOSE 8080
+CMD [ "java", "-jar", "/spring-petclinic-3.3.0-SNAPSHOT.jar" ]
