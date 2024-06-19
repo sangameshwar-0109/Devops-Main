@@ -1,0 +1,21 @@
+--- 
+
+# adding environmental variables to mysql database
+
+apiVersion: v1
+kind: Pod 
+metadata: 
+  name: mysqldb
+spec: 
+  containers:
+    - name: mysqldb
+      image: mysql:8.0-debian⁠
+      env: 
+        - name: MYSQL_ROOT_PASSWORD
+          value: admin@123
+        - name: MYSQL_DATABASE
+          value: mysql 
+        - name: MYSQL_USER
+          value: sangu
+        - name: MYSQL_PASSWORD
+          value: admin@123      
