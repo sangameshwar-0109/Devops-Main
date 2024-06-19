@@ -1,0 +1,17 @@
+--- 
+# this is for adding resources to containers 
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: jenkins
+spec: 
+  containers:
+    - name: jenkins
+      image: jenkins/jenkins:2.430-jdk21
+      resources: 
+        limits:
+          cpu: 1000m
+          memory: 1Gi
+        requests: 
+          cpu: 500m
+          memory: 256Mi  
