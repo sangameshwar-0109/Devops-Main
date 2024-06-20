@@ -1,0 +1,21 @@
+--- 
+# this is for init container manifesto
+apiVersion: v1
+kind: Pod 
+metadata: 
+  name: init
+spec: 
+  restartPolicy: OnFailure
+  initContainers: 
+    - name: init 
+      image: alpine 
+      args: 
+        - sleep
+        - 10s  
+  containers:
+    - name: main 
+      image: nginx
+      resources: 
+        limits:
+          cpu: 1000m
+          memory: 256Gi
