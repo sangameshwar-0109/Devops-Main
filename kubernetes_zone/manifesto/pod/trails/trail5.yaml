@@ -1,5 +1,7 @@
 --- 
-# this is for init container manifesto
+# this is for multi init container manifesto
+
+
 apiVersion: v1
 kind: Pod 
 metadata: 
@@ -7,15 +9,31 @@ metadata:
 spec: 
   restartPolicy: OnFailure
   initContainers: 
-    - name: init 
+    - name: init1 
       image: alpine 
       args: 
         - sleep
         - 10s  
+    - name: init2 
+      image: alpine 
+      args: 
+        - sleep
+        - 10s 
+    - name: init3 
+      image: alpine 
+      args: 
+        - sleep
+        - 10s    
   containers:
-    - name: main 
+    - name: nginx
       image: nginx
-      resources: 
+      resources:
         limits:
           cpu: 1000m
-          memory: 256Gi
+          memory: 0.5Gi
+    - name: nginx1 
+      image: nginx    
+      resources: 
+        limits: 
+          cpu: 1000m
+          memory: 0.5Gi  
