@@ -1,0 +1,31 @@
+###  manifesto for daemonsets 
+
+--- 
+apiVersion: apps/v1
+kind: DaemonSet
+metadata: 
+  name: nginx-ds
+  labels: 
+    app: ds
+spec: 
+  minReadySeconds: 10
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels: 
+      app: ds 
+  template: 
+    metadata: 
+      name: ds 
+      labels: 
+        app: ds 
+    spec: 
+      containers: 
+        - name: nginx
+          image: nginx 
+          ports: 
+            - containerPort: 80 
+                
+
+
+
+ 

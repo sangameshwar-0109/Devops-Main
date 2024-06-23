@@ -1,0 +1,27 @@
+
+### manifesto for cronjoob schedular
+
+--- 
+apiVersion: batch/v1 
+kind: CronJob
+metadata:
+  name: trail-cj
+spec: 
+  schedule: "* * * * *"
+  jobTemplate: 
+    metadata:
+      name: dummy-cj
+    spec:
+      template: 
+        metadata:
+          name: cj 
+          labels: 
+            app: cj 
+        spec: 
+          restartPolicy: Never
+          containers: 
+            - name: alpine 
+              image: alpine 
+              args: 
+                - sleep
+                - 1d      
